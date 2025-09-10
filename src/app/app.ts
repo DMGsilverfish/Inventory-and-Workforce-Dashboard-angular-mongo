@@ -1,9 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { Header } from "./header/header";
+import { DashboardStock } from "./dashboard/dashboard-stock/dashboard-stock";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
+  imports: [Header, DashboardStock]
 })
 export class App {
   
