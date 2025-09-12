@@ -1,59 +1,39 @@
-# InventoryAndWorkforceDashboard
+# Inventory and Workforce Management System
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+<p align="center">
+  <a href="https://angular.io">
+    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo" width="150"/>
+  </a>
+</p>
 
-## Development server
+[![Angular Version](https://img.shields.io/badge/Angular-20-red)](https://angular.io)
+[![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-To start a local development server, run:
+> **Admin Dashboard and Employee Interface**
+⚠️ This project is still in active development/production. Features may change as it grows.
+---
 
-```bash
-ng serve
-```
+## ✨ What It Does
+The Inventory and Workforce Management System is a demo Angular application designed to:
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+--✅ Provide role-based logins (Admin vs Employee)
+--✅ Showcase protected routes using Angular Guards
+--✅ Demonstrate basic JSON-based authentication
+--🔄 Planned: Enhanced UI/UX, integration with a real backend
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🏗️ Tech Stack
+- **Angular 20** – Modern framework for SPAs  
+- **TypeScript** – Strong typing for maintainability  
+- **HTML5 & CSS** – Simple UI, mobile-friendly  
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🚀 Getting Started
 
-```bash
-ng generate --help
-```
+### Prerequisites
+- **Node.js** (v18 or newer)  
+- **Angular CLI 20**
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
