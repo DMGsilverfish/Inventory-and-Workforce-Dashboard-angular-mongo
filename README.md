@@ -45,7 +45,7 @@ The **Inventory and Workforce Management System** is a demo Angular application 
 ## 🚀 Getting Started
 
 ### Prerequisites
-- **Node.js** (v18 or newer)  
+- **Node.js** (v18 or newer) - [Download Node.js](https://nodejs.org/en)  
 - **Angular CLI 20**
 
 ### Run Locally
