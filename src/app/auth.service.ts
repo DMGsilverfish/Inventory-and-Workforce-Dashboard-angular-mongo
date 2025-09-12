@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   private isLoggedIn = false;
   private role: 'admin' | 'employee' | null = null;
+  private userId: number | null = null;
 
   login(role: 'admin' | 'employee') {
     this.isLoggedIn = true;
@@ -23,6 +24,19 @@ export class AuthService {
 
   getUserRole(): 'admin' | 'employee' | null {
     return this.role;
+  }
+
+  //storing the user
+  setUserId(id: number) {
+    this.userId = id;
+  }
+
+  getUserId(): number | null {
+    return this.userId;
+  }
+
+  clearUser() {
+    this.userId = null;
   }
 }
 
