@@ -9,4 +9,6 @@ import { Header } from '../../header/header'; // adjust path if needed
   templateUrl: './admin-layout.component.html',
   styleUrls: ['./admin-layout.component.css']
 })
-export class AdminLayoutComponent {}
+export class AdminLayoutComponent {
+  headerText: string = "Admin Dashboard";
+}

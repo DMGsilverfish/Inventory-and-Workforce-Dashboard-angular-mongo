@@ -10,5 +10,5 @@ import { Header } from '../../header/header';
   styleUrl: './employee-layout.component.css'
 })
 export class EmployeeLayoutComponent {
-
+  headerText: string = "Employee Shifts";
 }
