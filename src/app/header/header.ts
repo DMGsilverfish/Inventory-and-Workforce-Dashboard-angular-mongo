@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { LogoutComponent } from "../logout/logout.component";
 
 @Component({
   selector: 'app-header',
-  imports: [],
+  imports: [LogoutComponent],
   templateUrl: './header.html',
   styleUrl: './header.css'
 })

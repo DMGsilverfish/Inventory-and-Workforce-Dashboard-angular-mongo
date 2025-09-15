@@ -26,6 +26,10 @@ export class EmployeeComponent implements OnInit{
       console.error("Cannot start shift: user ID not available");
       return;
     }
+    if (this.numShiftsToday >= 2) {
+      alert("You have reached the maximum of 2 shifts for today.");
+      return;
+    }
 
     const now = new Date();
     this.currentShift = {
