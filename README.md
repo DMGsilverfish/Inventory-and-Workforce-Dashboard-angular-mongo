@@ -22,7 +22,8 @@ The **Inventory and Workforce Management System** is a demo Angular application 
 - ✅ Provide **role-based logins** (Admin vs Employee)  
 - ✅ Showcase **protected routes** using Angular Guards  
 - ✅ Demonstrate basic **JSON-based authentication**  
-- 🔄 Planned: Enhanced UI/UX, integration with a real backend  
+- 🔄 Planned: Enhanced UI/UX, integration with a real backend
+- ❌ Employees can work up to **2 shifts per day**
 
 ---
 
@@ -51,7 +52,7 @@ The **Inventory and Workforce Management System** is a demo Angular application 
 ### Run Locally
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/inventory-and-workforce-dashboard.git
+git clone https://github.com/DMGsilverfish/inventory-and-workforce-dashboard.git
 cd inventory-and-workforce-dashboard
 
 # Install dependencies
