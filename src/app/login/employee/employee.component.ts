@@ -12,6 +12,7 @@ export class EmployeeComponent implements OnInit{
   currentShift: Shift | null = null;
   shiftStarted = false;
   userId: number | null = null;
+  numShiftsToday: number = 0;
 
   constructor(private authService: AuthService) {}
 
@@ -33,6 +34,7 @@ export class EmployeeComponent implements OnInit{
       startTime: now.toTimeString().split(' ')[0].substring(0,5)
     };
     this.shiftStarted = true;
+    this.numShiftsToday += 1;
   }
 
   stopShift() {
@@ -43,6 +45,7 @@ export class EmployeeComponent implements OnInit{
 
       //Later save to file / API
       console.log('Shift completed: ', this.currentShift);
+      console.log('Total shifts today: ', this.numShiftsToday);
     }
   }
 }
