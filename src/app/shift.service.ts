@@ -5,7 +5,7 @@ import { Observable } from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class ShiftService {
-    private apiURL = 'api/shifts';
+    private apiURL = 'http://localhost:3000/api/shifts';
 
     constructor(private http: HttpClient) {}
 
