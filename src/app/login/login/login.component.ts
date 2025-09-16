@@ -26,7 +26,8 @@ export class LoginComponent {
     this.http.get<any[]>('/admin.json').subscribe(admins => {
       const admin = admins.find(a => a.name === this.username && a.pin === this.password);
       if (admin) {
-        this.authService.login('admin');
+        this.authService.setUserId(admin.id)
+        this.authService.login('admin');    
         this.router.navigate(['./admin']);
       } else {
         this.http.get<any[]>('/employee.json').subscribe(employees => {

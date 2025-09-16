@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from "@angular/router";
 
@@ -5,8 +6,8 @@ import { RouterOutlet } from "@angular/router";
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.css',
-  imports: [RouterOutlet]
+  imports: [RouterOutlet, HttpClientModule]
 })
-export class App {
+export class AppComponent {
   
 }

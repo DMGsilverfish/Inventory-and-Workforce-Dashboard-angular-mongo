@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Shift } from '../../models/shift';
 import { AuthService } from '../../auth.service';
+import { ShiftService } from '../../shift.service';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee',
-  imports: [],
+  imports: [CommonModule, HttpClientModule],
+  providers: [ShiftService],
   templateUrl: './employee.component.html',
-  styleUrl: './employee.component.css'
+  styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit{
   currentShift: Shift | null = null;
@@ -14,7 +18,7 @@ export class EmployeeComponent implements OnInit{
   userId: number | null = null;
   numShiftsToday: number = 0;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private shiftService: ShiftService) {}
 
   ngOnInit() {
   this.userId = this.authService.getUserId();
