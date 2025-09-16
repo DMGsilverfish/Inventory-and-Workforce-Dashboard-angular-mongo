@@ -7,7 +7,10 @@ import { AdminComponent } from './login/admin/admin.component';
 import { AuthGuard } from './auth-guard';
 
 export const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  {
+    path: 'login', component: LoginComponent
+  },
   {
     path: 'admin',
     component: AdminLayoutComponent,

@@ -14,22 +14,6 @@ body {
   padding: 20px;
 }
 
-.employee-container {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 450px;
-  padding: 40px;
-  transition: all 0.3s ease;
-  margin: 50px auto 0;
-}
-
-.employee-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
-}
-
 h2 {
   color: #2c3e50;
   font-weight: 600;
@@ -50,22 +34,22 @@ h2:after {
 }
 
 .shift-container {
+  width: 60%;                /* Match header width */
+  margin: 30px auto;         /* Center horizontally and add top margin */
+  border: 2px solid #ccc;    /* Add border */
+  border-radius: 12px;       /* Optional: rounded corners */
+  padding: 24px;             /* Space inside */
+  background: #fff;          /* Optional: white background */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06); /* Optional: subtle shadow */
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  margin-top: 20px;
+  justify-content: space-around;
+  gap: 32px;
 }
 
 .shift-block {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  padding: 20px;
-  border: 1px solid #eee;
-  border-radius: 12px;
-  background: #fafafa;
-  transition: all 0.3s ease;
 }
 
 .shift-block:hover {
