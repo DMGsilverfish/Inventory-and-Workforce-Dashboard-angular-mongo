@@ -21,8 +21,8 @@ export class EmployeeComponent implements OnInit{
   constructor(private authService: AuthService, private shiftService: ShiftService) {}
 
   ngOnInit() {
-  this.userId = this.authService.getUserId();
-  console.log("Employee logged in with ID:", this.userId);
+    this.userId = this.authService.getUserId();
+    console.log("Employee logged in with ID:", this.userId);
   }
 
   startShift() {

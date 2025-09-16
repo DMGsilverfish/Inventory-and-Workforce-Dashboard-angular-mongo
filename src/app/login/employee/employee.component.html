@@ -2,7 +2,7 @@
   <div class="shift-container">
   <!-- Start Shift -->
   <div class="shift-block">
-    <button (click)="startShift()" [disabled]="shiftStarted">Start Shift</button>
+    <button type="button" (click)="startShift()" [disabled]="shiftStarted">Start Shift</button>
     @if (currentShift?.startTime) {
         <p>Started at: {{ currentShift?.startTime }}</p>
     }
@@ -10,7 +10,7 @@
 
   <!-- End Shift -->
   <div class="shift-block">
-    <button (click)="stopShift()" [disabled]="!shiftStarted">End Shift</button>
+    <button type="button" (click)="stopShift()" [disabled]="!shiftStarted">End Shift</button>
     @if (currentShift?.endTime) {
         <p>Ended at: {{ currentShift?.endTime }}</p>
     }
