@@ -54,6 +54,18 @@ export class EmployeeComponent implements OnInit{
       //Later save to file / API
       console.log('Shift completed: ', this.currentShift);
       console.log('Total shifts today: ', this.numShiftsToday);
+      this.loadShifts(this.currentShift);
     }
+  }
+
+  loadShifts(shift: Shift) {
+    this.shiftService.addShift(shift).subscribe({
+      next: (res) => {
+        console.log('Shift saved successfully:', res);
+      },
+      error: (err) => {
+        console.error('Error saving shift:', err);
+      }
+    })
   }
 }
