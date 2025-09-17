@@ -61,8 +61,15 @@ The **Inventory and Workforce Management System** is a demo Angular application 
 git clone https://github.com/DMGsilverfish/inventory-and-workforce-dashboard.git
 cd inventory-and-workforce-dashboard
 
-# Install dependencies
-npm install
+# ----------------------
+# 1️⃣ Start the backend
+# ----------------------
+# Navigate to the backend folder (cd backend)
+node server.js
+# The backend API will run on http://localhost:3000
 
-# Start the dev server
+# ----------------------
+# 2️⃣ Start the frontend (new terminal)
+# ----------------------
 ng serve
+# Open your browser and go to http://localhost:4200
