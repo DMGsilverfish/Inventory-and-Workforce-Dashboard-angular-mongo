@@ -9,28 +9,28 @@ export class ShiftService {
 
   constructor(private http: HttpClient) {}
 
-  // completed shifts
+  // Get completed shifts
   getShifts(): Observable<Shift[]> {
-    return this.http.get<Shift[]>(`${this.apiURL}`);
+    return this.http.get<Shift[]>(this.apiURL);
   }
 
-  // active shifts (temp.json)
+  // Get active shifts
   getActiveShifts(): Observable<Shift[]> {
-    return this.http.get<Shift[]>(`${this.apiURL}/active`);
+    return this.http.get<Shift[]>(`${this.apiURL}?status=active`);
   }
 
-  // start a shift -> /api/shifts/start
+  // Start a new shift
   startShift(shift: Shift): Observable<Shift> {
-    return this.http.post<Shift>(`${this.apiURL}/start`, shift);
+    return this.http.post<Shift>(this.apiURL, shift);
   }
 
-  // end a shift -> /api/shifts/end
-  endShift(shift: Shift): Observable<any> {
-    return this.http.post<any>(`${this.apiURL}/end`, shift);
+  // End an existing shift
+  endShift(shiftId: number, updates: Partial<Shift>): Observable<Shift> {
+    return this.http.patch<Shift>(`${this.apiURL}/${shiftId}`, updates);
   }
 
-  // alias kept for older code that used addShift
-  addShift(shift: Shift): Observable<any> {
-    return this.startShift(shift);
+  // Optional: delete a shift (admin usage)
+  deleteShift(shiftId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiURL}/${shiftId}`);
   }
 }
