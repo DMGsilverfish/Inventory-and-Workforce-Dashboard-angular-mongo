@@ -24,25 +24,37 @@ export class EmployeeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.userId = this.authService.getUserId();
-    console.log("Employee logged in with ID:", this.userId);
+  this.userId = this.authService.getUserId();
+  console.log("Employee logged in with ID:", this.userId);
 
-    if (this.userId) {
-      this.shiftService.getActiveShifts().subscribe({
-        next: (activeShifts) => {
-          const userShift = activeShifts.find((s: Shift) => s.id === this.userId);
-          if (userShift) {
-            this.currentShift = userShift;
-            this.shiftStarted = true;
-            console.log("Restored active shift:", this.currentShift);
-          }
-        },
-        error: (err) => console.error('Error fetching active shifts:', err)
-      });
-    }
+  if (this.userId) {
+    // ✅ Fetch today's shift count from backend
+    this.shiftService.getNumShiftsToday(this.userId).subscribe({
+      next: (res) => {
+        this.numShiftsToday = res.count;   // use res.count
+        console.log("Num Shifts today:", this.numShiftsToday);
+      },
+      error: (err) => console.error("Error fetching shift count:", err)
+    });
+
+    // ✅ Check if user already has an active shift
+    this.shiftService.getActiveShifts().subscribe({
+      next: (activeShifts) => {
+        const userShift = activeShifts.find((s: Shift) => s.id === this.userId);
+        if (userShift) {
+          this.currentShift = userShift;
+          this.shiftStarted = true;
+          console.log("Active shift loaded:", this.currentShift);
+        }
+      },
+      error: (err) => console.error("Error fetching active shifts:", err)
+    });
   }
+}
+
 
   startShift() {
+    console.log("Attempting to start shift for user ID:", this.userId);
     if (!this.userId) {
       console.error("Cannot start shift: user ID not available");
       return;
@@ -60,6 +72,7 @@ export class EmployeeComponent implements OnInit {
     };
     this.shiftStarted = true;
     this.numShiftsToday += 1;
+    console.log("Num Shifts today" + this.numShiftsToday)
 
     this.shiftService.startShift(this.currentShift).subscribe({
       next: (res) => console.log('Shift started and saved:', res),

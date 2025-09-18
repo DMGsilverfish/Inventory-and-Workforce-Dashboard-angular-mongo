@@ -119,6 +119,26 @@ app.delete('/api/shifts/:id', async (req, res) => {
   }
 });
 
+// GET /shifts/count/:userId → count today's shifts for a user
+app.get('/shifts/count/:userId', async (req, res) => {
+  const userId = parseInt(req.params.userId);
+  const today = new Date().toISOString().split('T')[0];
+
+  try {
+    const completedShifts = await readJson(shiftsFile);
+
+    const count = completedShifts.filter(s =>
+      s.id === userId && s.date === today
+    ).length;
+
+    res.json({ count });
+  } catch (err) {
+    console.error("Error counting shifts:", err);
+    res.status(500).send('Error counting shifts');
+  }
+});
+
+
 // ------------------------------------------------ //
 
 app.listen(PORT, () => {

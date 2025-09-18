@@ -33,4 +33,10 @@ export class ShiftService {
   deleteShift(shiftId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiURL}/${shiftId}`);
   }
+
+  // shift.service.ts
+getNumShiftsToday(userId: number) {
+  return this.http.get<{ count: number }>(`http://localhost:3000/shifts/count/${userId}`);
+}
+
 }
