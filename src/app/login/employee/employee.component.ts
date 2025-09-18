@@ -24,33 +24,39 @@ export class EmployeeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-  this.userId = this.authService.getUserId();
-  console.log("Employee logged in with ID:", this.userId);
+    this.userId = this.authService.getUserId();
+    console.log("Employee logged in with ID:", this.userId);
 
-  if (this.userId) {
-    // ✅ Fetch today's shift count from backend
-    this.shiftService.getNumShiftsToday(this.userId).subscribe({
-      next: (res) => {
-        this.numShiftsToday = res.count;   // use res.count
-        console.log("Num Shifts today:", this.numShiftsToday);
-      },
-      error: (err) => console.error("Error fetching shift count:", err)
-    });
+    if (this.userId) {
+      // ✅ Get completed shifts
+      this.shiftService.getNumShiftsToday(this.userId).subscribe({
+        next: (res) => {
+          this.numShiftsToday = res.count;
+          console.log("Completed shifts today:", this.numShiftsToday);
 
-    // ✅ Check if user already has an active shift
-    this.shiftService.getActiveShifts().subscribe({
-      next: (activeShifts) => {
-        const userShift = activeShifts.find((s: Shift) => s.id === this.userId);
-        if (userShift) {
-          this.currentShift = userShift;
-          this.shiftStarted = true;
-          console.log("Active shift loaded:", this.currentShift);
-        }
-      },
-      error: (err) => console.error("Error fetching active shifts:", err)
-    });
+          // ✅ Now check if there's an active shift
+          this.shiftService.getActiveShifts().subscribe({
+            next: (activeShifts) => {
+              const userShift = activeShifts.find((s: Shift) => s.id === this.userId);
+              if (userShift) {
+                this.currentShift = userShift;
+                this.shiftStarted = true;
+
+                // 🚀 Add active shift into the count
+                this.numShiftsToday = res.count + 1;
+
+                console.log("Active shift loaded:", this.currentShift);
+                console.log("Num Shifts today (including active):", this.numShiftsToday);
+              }
+            },
+            error: (err) => console.error("Error fetching active shifts:", err)
+          });
+        },
+        error: (err) => console.error("Error fetching shift count:", err)
+      });
+    }
   }
-}
+
 
 
   startShift() {
@@ -71,6 +77,7 @@ export class EmployeeComponent implements OnInit {
       startTime: now.toTimeString().split(' ')[0].substring(0, 5)
     };
     this.shiftStarted = true;
+    
     this.numShiftsToday += 1;
     console.log("Num Shifts today" + this.numShiftsToday)
 

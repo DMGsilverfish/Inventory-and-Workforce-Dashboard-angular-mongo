@@ -17,3 +17,11 @@
   </div>
 </div>
 
+<!-- Progress -->
+<div class="shift-progress">
+  <p>Your shifts today: {{ numShiftsToday }}/2</p>
+  <div class="progress-bar">
+    <div class="progress-fill" [style.width.%]="(numShiftsToday / 2) * 100"></div>
+  </div>
+</div>
+
