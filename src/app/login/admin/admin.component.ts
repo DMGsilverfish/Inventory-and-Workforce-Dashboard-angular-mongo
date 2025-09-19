@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { DashboardStock } from "../../dashboard/dashboard-stock/dashboard-stock";
+import { AdminEmployeeListComponent } from "./admin-employee-list/admin-employee-list.component";
 
 interface Employee {
   id: number;
@@ -14,7 +16,7 @@ interface Employee {
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, RouterModule],
+  imports: [CommonModule, HttpClientModule, RouterModule, DashboardStock, AdminEmployeeListComponent],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
@@ -32,9 +34,5 @@ export class AdminComponent implements OnInit {
       },
       error: (err) => console.error("Error loading employees:", err)
     });
-  }
-
-  viewShifts(id: number, name: string): void {
-    this.router.navigate(['/admin/viewShifts', id, name]);
   }
 }
