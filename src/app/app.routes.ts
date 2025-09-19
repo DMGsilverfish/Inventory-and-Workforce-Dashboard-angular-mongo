@@ -5,6 +5,7 @@ import { EmployeeLayoutComponent } from './login/employee-layout/employee-layout
 import { EmployeeComponent } from './login/employee/employee.component';
 import { AdminComponent } from './login/admin/admin.component';
 import { AuthGuard } from './auth-guard';
+import { ViewShiftsComponent } from './login/view-shifts/view-shifts.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -16,7 +17,9 @@ export const routes: Routes = [
     component: AdminLayoutComponent,
     canActivate: [AuthGuard],
     children: [
-        { path: '', component: AdminComponent } // default admin page
+        { path: '', component: AdminComponent }, // default admin page
+        { path: 'viewShifts/:id/:name',
+          component: ViewShiftsComponent } // /admin/viewShifts/1
     ]
   },
   {

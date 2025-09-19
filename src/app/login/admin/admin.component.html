@@ -16,7 +16,7 @@
             <td>{{ i + 1 }}</td>
             <td>{{ emp.name }}</td>
             <td>
-              <button (click)="viewShifts(emp)">View Shifts</button>
+              <button (click)="viewShifts(emp.id, emp.name)">View Shifts</button>
             </td>
           </tr>
         }
