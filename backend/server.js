@@ -138,6 +138,23 @@ app.get('/shifts/count/:userId', async (req, res) => {
   }
 });
 
+// ------------------------------------------------ //
+
+// GET /api/shifts/user/:userID → get all shifts for a user
+app.get('/api/shifts/user/:userId', async (req, res) => {
+  const userId = parseInt(req.params.userId);
+
+  try {
+    const completedShifts = await readJson(shiftsFile);
+    const userShifts = completedShifts.filter(s => s.id === userId);
+
+    res.json(userShifts);
+  } catch (err) {
+    console.error("Error fetching user shifts:", err);
+    res.status(500).send('Error fetching user shifts');
+  }
+});
+
 
 // ------------------------------------------------ //
 

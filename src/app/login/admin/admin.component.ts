@@ -24,6 +24,7 @@ export class AdminComponent implements OnInit {
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    
     this.http.get<Employee[]>('/employee.json').subscribe({
       next: (data) => {
         this.employees = data;
