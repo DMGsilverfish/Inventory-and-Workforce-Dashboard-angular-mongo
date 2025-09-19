@@ -2,7 +2,7 @@
 <div class="shift-container">
   <!-- Start Shift -->
   <div class="shift-block">
-    <button type="button" (click)="startShift()" [disabled]="shiftStarted">Start Shift</button>
+    <button type="button" (click)="startShift()" [disabled]="shiftStarted || numShiftsToday >= 2">Start Shift</button>
     @if (currentShift?.startTime) {
         <p>Started at: {{ currentShift?.startTime }}</p>
     }

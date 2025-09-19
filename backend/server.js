@@ -13,6 +13,7 @@ app.use(bodyParser.json());
 // File paths
 const tempFile = path.join(__dirname, '../public/temp.json'); // active shifts
 const shiftsFile = path.join(__dirname, '../public/employee-shifts.json'); // completed shifts
+const usersFile = path.join(__dirname, '../public/employee.json'); // user data
 
 // ------------------- UTILITIES ------------------- //
 function readJson(filePath) {
@@ -155,6 +156,20 @@ app.get('/api/shifts/user/:userId', async (req, res) => {
   }
 });
 
+//GET /api/shifts/user/:userID/ name → get user name
+app.get('/api/shifts/user/:userId/name', async (req, res) => {
+  const userId = parseInt(req.params.userId);
+
+  try {
+    const users = await readJson(usersFile);
+    const name = users.find(u => u.id === userId)?.name || 'Unknown User';
+
+    res.json({ name });
+  } catch (err) {
+    console.error("Error fetching user name:", err);
+    res.status(500).send('Error fetching user name');
+  }
+});
 
 // ------------------------------------------------ //
 

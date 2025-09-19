@@ -26,7 +26,6 @@ export class ViewShiftsComponent implements OnInit {
 
   ngOnInit() {
   this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
-  this.employeeName = this.route.snapshot.paramMap.get('name') ?? 'Unknown';
 
   if (this.employeeId) {
     this.shiftService.getUserShifts(this.employeeId).subscribe({
@@ -35,6 +34,13 @@ export class ViewShiftsComponent implements OnInit {
         console.log("Loaded shifts:", this.shifts);
       },
       error: (err) => console.error("Error loading user shifts:", err)
+    });
+    this.shiftService.getUserName(this.employeeId).subscribe({
+      next: (data) => {
+        this.employeeName = data.name;
+        console.log("Loaded employee name:", this.employeeName);
+      },
+      error: (err) => console.error("Error loading employee name:", err)
     });
   }
 }

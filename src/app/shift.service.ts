@@ -45,5 +45,10 @@ getUserShifts(userId: number): Observable<Shift[]> {
   return this.http.get<Shift[]>(`${this.apiURL}/user/${userId}`);
 }
 
+//Get user name by userID
+getUserName(userId: number): Observable<{ name: string }> {
+  return this.http.get<{ name: string }>(`${this.apiURL}/user/${userId}/name`);
+}
+
 
 }

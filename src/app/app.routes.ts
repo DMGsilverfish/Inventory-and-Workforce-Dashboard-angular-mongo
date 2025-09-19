@@ -18,7 +18,7 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
         { path: '', component: AdminComponent }, // default admin page
-        { path: 'viewShifts/:id/:name',
+        { path: 'viewShifts/:id',
           component: ViewShiftsComponent } // /admin/viewShifts/1
     ]
   },

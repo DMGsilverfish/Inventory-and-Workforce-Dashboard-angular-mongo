@@ -21,6 +21,6 @@ export class AdminEmployeeListComponent {
   constructor(private router: Router) {}
 
   viewShifts(emp: Employee) {
-    this.router.navigate([`/admin/viewShifts`, emp.id, emp.name]);
+    this.router.navigate([`/admin/viewShifts`, emp.id]);
   }
 }
