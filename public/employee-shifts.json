@@ -2,26 +2,26 @@
   {
     "id": 1,
     "date": "2025-09-17",
-    "startTime": "10:47",
-    "endTime": "10:47"
+    "startTime": "10:00",
+    "endTime": "12.00"
   },
   {
     "id": 1,
     "date": "2025-09-17",
-    "startTime": "10:48",
-    "endTime": "10:49"
+    "startTime": "13:00",
+    "endTime": "16:00"
   },
   {
     "id": 1,
     "date": "2025-09-18",
-    "startTime": "16:31",
-    "endTime": "16:31"
+    "startTime": "10:00",
+    "endTime": "12:00"
   },
   {
     "id": 1,
     "date": "2025-09-18",
-    "startTime": "16:32",
-    "endTime": "16:32"
+    "startTime": "13:00",
+    "endTime": "16:00"
   },
   {
     "id": 3,
@@ -39,12 +39,12 @@
     "id": 1,
     "date": "2025-09-19",
     "startTime": "12:26",
-    "endTime": "12:26"
+    "endTime": "13:26"
   },
   {
     "id": 1,
     "date": "2025-09-19",
-    "startTime": "16:44",
-    "endTime": "16:44"
+    "startTime": "16:00",
+    "endTime": "17:00"
   }
 ]

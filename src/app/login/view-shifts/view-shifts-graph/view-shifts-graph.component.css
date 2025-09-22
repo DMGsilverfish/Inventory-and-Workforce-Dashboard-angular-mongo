@@ -1,0 +1,50 @@
+:host {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.chart-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.chart-container:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+canvas {
+  width: 100% !important;
+  height: 400px !important;
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  gap: 0.5rem;
+}
+
+.filter-buttons button {
+  padding: 0.4rem 1rem;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.filter-buttons button:hover {
+  background: linear-gradient(to right, #5c0fb5, #1f66e0);
+  transform: translateY(-1px);
+}
+
+.filter-buttons button:active {
+  transform: translateY(0);
+}
