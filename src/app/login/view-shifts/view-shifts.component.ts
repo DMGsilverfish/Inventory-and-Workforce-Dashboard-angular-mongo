@@ -5,10 +5,13 @@ import { Location } from '@angular/common';
 import { ShiftService } from '../../shift.service';
 import { Shift } from '../../models/shift';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewShiftsGraphComponent } from './view-shifts-graph/view-shifts-graph..component';
+import { ViewShiftsTableComponent } from './view-shifts-table/view-shifts-table.component';
+
 
 @Component({
   selector: 'app-view-shifts',
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, ViewShiftsTableComponent, ViewShiftsGraphComponent],
   standalone: true,
   templateUrl: './view-shifts.component.html',
   styleUrls: ['./view-shifts.component.css'],
@@ -25,35 +28,19 @@ export class ViewShiftsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-  this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
+    this.employeeId = Number(this.route.snapshot.paramMap.get('id'));
 
-  if (this.employeeId) {
-    this.shiftService.getUserShifts(this.employeeId).subscribe({
-      next: (data) => {
-        this.shifts = data;
-        console.log("Loaded shifts:", this.shifts);
-      },
-      error: (err) => console.error("Error loading user shifts:", err)
-    });
-    this.shiftService.getUserName(this.employeeId).subscribe({
-      next: (data) => {
-        this.employeeName = data.name;
-        console.log("Loaded employee name:", this.employeeName);
-      },
-      error: (err) => console.error("Error loading employee name:", err)
-    });
-  }
-}
+    if (this.employeeId) {
+      this.shiftService.getUserShifts(this.employeeId).subscribe({
+        next: (data) => (this.shifts = data),
+        error: (err) => console.error("Error loading user shifts:", err)
+      });
 
-
-  loadShifts(userId: number) {
-    this.shiftService.getUserShifts(userId).subscribe({
-      next: (data) => {
-        this.shifts = data;
-        console.log("Shifts loaded:", this.shifts);
-      },
-      error: (err) => console.error("Error loading shifts:", err)
-    });
+      this.shiftService.getUserName(this.employeeId).subscribe({
+        next: (data) => (this.employeeName = data.name),
+        error: (err) => console.error("Error loading employee name:", err)
+      });
+    }
   }
 
   goBack() {

@@ -1,0 +1,20 @@
+<table class="employee-table" *ngIf="shifts.length > 0; else noShifts">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Start</th>
+      <th>End</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let shift of shifts">
+      <td>{{ shift.date }}</td>
+      <td>{{ shift.startTime }}</td>
+      <td>{{ shift.endTime }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noShifts>
+  <p>No shifts found for this employee.</p>
+</ng-template>

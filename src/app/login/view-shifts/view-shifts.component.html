@@ -2,26 +2,8 @@
   <h2>{{ employeeName }}'s Shifts</h2>
   <p class="subtitle">Employee ID: {{ employeeId }}</p>
 
-  <table class="shifts-table" *ngIf="shifts.length > 0; else noShifts">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Start</th>
-        <th>End</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let shift of shifts">
-        <td>{{ shift.date }}</td>
-        <td>{{ shift.startTime }}</td>
-        <td>{{ shift.endTime }}</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <ng-template #noShifts>
-    <p>No shifts found for this employee.</p>
-  </ng-template>
+  <app-view-shifts-graph [shifts]="shifts"></app-view-shifts-graph>
+  <app-view-shifts-table [shifts]="shifts"></app-view-shifts-table>
 
   <div class="back-btn-container">
     <button class="btn-back" (click)="goBack()">Back</button>
