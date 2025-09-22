@@ -1,97 +1,98 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaseChartDirective } from 'ng2-charts';
-import { Chart, ChartConfiguration, ChartOptions, registerables } from 'chart.js';
+import { Chart, registerables, ChartOptions } from 'chart.js';
 import { Shift } from '../../../models/shift';
 
-// ✅ Register everything once
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-view-shifts-graph',
   standalone: true,
-  imports: [CommonModule, BaseChartDirective],
+  imports: [CommonModule],
   templateUrl: './view-shifts-graph.component.html',
   styleUrls: ['./view-shifts-graph.component.css']
 })
 export class ViewShiftsGraphComponent implements OnChanges {
   @Input() shifts: Shift[] = [];
+  chart: any;
 
-  barChartData: ChartConfiguration<'bar'>['data'] = {
-    labels: [],
-    datasets: []
-  };
-
-  barChartOptions: ChartOptions<'bar'> = {
-    responsive: true,
-    scales: {
-      x: { stacked: true },
-      y: {
-        stacked: true,
-        min: 7,
-        max: 17,
-        title: { display: true, text: 'Hour of Day' }
-      }
-    }
-  };
-
-  ngOnChanges() {
-    if (this.shifts.length > 0) {
-      this.buildChart();
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['shifts']) {
+      this.createChart();
     }
   }
 
-  buildChart() {
-    // 🔹 Group shifts by date
+  private createChart() {
+    if (this.chart) this.chart.destroy();
+
+    // Group shifts by date
     const grouped: { [date: string]: Shift[] } = {};
     this.shifts.forEach(shift => {
       if (!grouped[shift.date]) grouped[shift.date] = [];
       grouped[shift.date].push(shift);
     });
 
-    const dates = Object.keys(grouped).sort();
-    this.barChartData.labels = dates;
+    const labels = Object.keys(grouped).sort();
 
-    // 🔹 Convert each shift into start and duration for stacked bars
-    const shift1Data: { x: string; y: number[] }[] = [];
-    const shift2Data: { x: string; y: number[] }[] = [];
+    // Prepare datasets (max 2 shifts per day)
+    const datasets = [0, 1].map(i => {
+      return {
+        label: `Shift ${i + 1}`,
+        backgroundColor: i === 0 ? '#42A5F5' : '#66BB6A',
+        stack: 'shifts',
+        data: labels.map(date => {
+          const shift = grouped[date][i];
+          if (!shift) return 0;
 
-    dates.forEach(date => {
-      const shifts = grouped[date];
-      if (shifts[0]) {
-        const start = this.toHour(shifts[0].startTime);
-        const end = this.toHour(shifts[0].endTime);
-        shift1Data.push({ x: date, y: [start, end] });
-      }
-      if (shifts[1]) {
-        const start = this.toHour(shifts[1].startTime);
-        const end = this.toHour(shifts[1].endTime);
-        shift2Data.push({ x: date, y: [start, end] });
-      }
+          const start = this.timeToDecimal(shift.startTime!);
+          const duration = this.timeToDecimal(shift.endTime!) - start;
+
+          return {
+            x: start,       // position of the bar
+            y: date,        // the label on y-axis
+            x2: start + duration, // end of bar
+            startTime: shift.startTime,
+            endTime: shift.endTime
+          };
+        })
+      };
     });
 
-    this.barChartData.datasets = [
-      {
-        label: 'Shift 1',
-        data: shift1Data.map(s => s.y[1] - s.y[0]), // duration
-        backgroundColor: 'rgba(54, 162, 235, 0.7)'
-      },
-      {
-        label: 'Shift 2',
-        data: shift2Data.map(s => s.y[1] - s.y[0]), // duration
-        backgroundColor: 'rgba(255, 99, 132, 0.7)'
-      }
-    ];
+    const ctx = (document.getElementById('shiftsChart') as HTMLCanvasElement).getContext('2d');
 
-    console.log('Chart data:', this.barChartData);
+    this.chart = new Chart(ctx!, {
+      type: 'bar',
+      data: { labels, datasets },
+      options: {
+        indexAxis: 'y', // horizontal bars
+        responsive: true,
+        plugins: {
+          title: { display: true, text: 'Employee Shifts Timeline' },
+          tooltip: {
+            callbacks: {
+              label: function(context: any) {
+                const raw = context.raw;
+                return raw.startTime && raw.endTime
+                  ? `Shift: ${raw.startTime} - ${raw.endTime}`
+                  : '';
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            min: 7,   // X-axis starts at 7:00
+            max: 17,  // X-axis ends at 17:00
+            title: { display: true, text: 'Time (hours)' }
+          },
+          y: { stacked: true }
+        }
+      }
+    });
   }
 
-  // 🔹 Convert "HH:mm" or "HH.mm" to float hour
-  toHour(time?: string): number {
-    if (!time) return 0;
-    const parts = time.includes(':') ? time.split(':') : time.split('.');
-    const hour = parseInt(parts[0], 10);
-    const minutes = parseInt(parts[1] || '0', 10);
-    return hour + minutes / 60;
+  private timeToDecimal(time: string): number {
+    const [h, m] = time.split(':').map(Number);
+    return h + (m || 0) / 60;
   }
 }
