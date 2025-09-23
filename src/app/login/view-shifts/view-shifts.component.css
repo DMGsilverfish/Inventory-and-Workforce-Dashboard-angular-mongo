@@ -67,3 +67,35 @@ h2:after {
 .btn-back:active {
   transform: scale(0.95);
 }
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.btn-filter {
+  background: linear-gradient(135deg, #2575fc, #6a11cb);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.btn-filter:hover {
+  transform: scale(1.05);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-filter:active {
+  transform: scale(0.95);
+}
+
+.btn-filter.active {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}

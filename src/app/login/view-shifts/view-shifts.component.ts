@@ -21,6 +21,7 @@ export class ViewShiftsComponent implements OnInit {
   employeeId: number | null = null;
   employeeName: string | null = null;
   shifts: Shift[] = [];
+  filteredShifts: Shift[] = [];
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -32,7 +33,9 @@ export class ViewShiftsComponent implements OnInit {
 
     if (this.employeeId) {
       this.shiftService.getUserShifts(this.employeeId).subscribe({
-        next: (data) => (this.shifts = data),
+        next: (data) => { this.shifts = data;
+                          this.filteredShifts = data;
+        },
         error: (err) => console.error("Error loading user shifts:", err)
       });
 
@@ -41,6 +44,28 @@ export class ViewShiftsComponent implements OnInit {
         error: (err) => console.error("Error loading employee name:", err)
       });
     }
+  }
+
+  setFilter(range: 'week' | 'month') {
+    const now = new Date();
+
+    this.filteredShifts = this.shifts.filter((shift) => {
+      const shiftDate = new Date(shift.date);
+
+      if (range === 'week') {
+        const oneWeekAgo = new Date();
+        oneWeekAgo.setDate(now.getDate() - 7);
+        return shiftDate >= oneWeekAgo && shiftDate <= now;
+      }
+
+      if (range === 'month') {
+        const oneMonthAgo = new Date();
+        oneMonthAgo.setMonth(now.getMonth() - 1);
+        return shiftDate >= oneMonthAgo && shiftDate <= now;
+      }
+
+      return true;
+    });
   }
 
   goBack() {

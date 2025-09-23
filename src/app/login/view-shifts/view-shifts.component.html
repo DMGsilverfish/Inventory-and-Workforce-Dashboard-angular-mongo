@@ -2,8 +2,15 @@
   <h2>{{ employeeName }}'s Shifts</h2>
   <p class="subtitle">Employee ID: {{ employeeId }}</p>
 
-  <app-view-shifts-graph [shifts]="shifts"></app-view-shifts-graph>
-  <app-view-shifts-table [shifts]="shifts"></app-view-shifts-table>
+  <!-- Filter buttons -->
+  <div class="filter-buttons">
+    <button class="btn-filter" (click)="setFilter('week')">Last Week</button>
+    <button class="btn-filter" (click)="setFilter('month')">Last Month</button>
+    <button class="btn-filter" (click)="filteredShifts = shifts">Show All</button>
+  </div>
+
+  <app-view-shifts-graph [shifts]="filteredShifts"></app-view-shifts-graph>
+  <app-view-shifts-table [shifts]="filteredShifts"></app-view-shifts-table>
 
   <div class="back-btn-container">
     <button class="btn-back" (click)="goBack()">Back</button>
