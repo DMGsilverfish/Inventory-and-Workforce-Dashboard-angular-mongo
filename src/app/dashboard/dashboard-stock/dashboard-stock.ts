@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { StockService } from '../../stock.service';
 import { StockItem } from '../../models/stock-item.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-stock',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './dashboard-stock.html',
   styleUrl: './dashboard-stock.css'
 })
@@ -14,23 +16,18 @@ export class DashboardStock implements OnInit {
   totalItems: number = 0;
   inStockPercentage: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private stockService: StockService) {}
 
   ngOnInit(): void {
-      this.http.get<StockItem[]>('/stock.json').subscribe((data) => {
-        this.stockItems = data;
-        this.totalItems = data.length;
-        this.calculateInStock();
-      })
+      this.stockService.getStock().subscribe((data: StockItem[]) => {
+          this.stockItems = data;
+      });
+
+      this.stockService.getStockSummary().subscribe(summary => {
+        this.inStockCount = summary.inStockCount;
+        this.totalItems = summary.totalItems;
+        this.inStockPercentage = summary.inStockPercentage;
+      });
   }
 
-  private calculateInStock(): void {
-    this.inStockCount = this.stockItems.filter(item =>
-      item.quantity >= item['full-stock'] * 0.75
-    ).length;
-
-    this.inStockPercentage = Math.round(
-      (this.inStockCount / this.totalItems) * 100
-    );
-  }
 }

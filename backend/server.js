@@ -173,6 +173,39 @@ app.get('/api/shifts/user/:userId/name', async (req, res) => {
 });
 
 // ------------------------------------------------ //
+// ----------------Stock System-------------------- //
+
+// GET all stock items
+app.get('/api/stock', async (req, res) => {
+  try {
+    const stock = await readJson(stockFile);
+    res.json(stock);
+  } catch (err) {
+    console.error("Error reading stock:", err);
+    res.status(500).send('Error reading stock');
+  }
+});
+
+// GET stock summary
+app.get('/api/stock/summary', async (req, res) => {
+  try {
+    const stock = await readJson(stockFile);
+    const totalItems = stock.length;
+    const inStockCount = stock.filter(item => item.quantity >= item['full-stock'] * 0.75).length;
+    const inStockPercentage = Math.round((inStockCount / totalItems) * 100);
+
+    res.json({
+      inStockCount,
+      totalItems,
+      inStockPercentage
+    });
+  } catch (err) {
+    console.error("Error calculating stock summary:", err);
+    res.status(500).send('Error calculating stock summary');
+  }
+});
+
+// ------------------------------------------------ //
 
 app.listen(PORT, () => {
   console.log(`Backend server running RESTfully on http://localhost:${PORT}`);
