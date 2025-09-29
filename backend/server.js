@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 const tempFile = path.join(__dirname, '../public/temp.json'); // active shifts
 const shiftsFile = path.join(__dirname, '../public/employee-shifts.json'); // completed shifts
 const usersFile = path.join(__dirname, '../public/employee.json'); // user data
+const stockFile = path.join(__dirname, '../public/stock.json'); // stock data
 
 // ------------------- UTILITIES ------------------- //
 function readJson(filePath) {

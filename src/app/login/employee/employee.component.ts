@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Shift } from '../../models/shift';
+import { Shift } from '../../models/shift.model';
 import { AuthService } from '../../auth.service';
 import { ShiftService } from '../../shift.service';
 import { HttpClientModule } from '@angular/common/http';

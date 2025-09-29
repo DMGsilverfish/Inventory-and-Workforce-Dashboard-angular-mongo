@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
-import { Shift } from '../../../models/shift';
+import { Shift } from '../../../models/shift.model';
 
 Chart.register(...registerables);
 

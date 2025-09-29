@@ -1,0 +1,119 @@
+[
+  {
+    "id": 1,
+    "name": "Screwdriver",
+    "brand": "ToolMaster",
+    "quantity": 150,
+    "full-stock": 200,
+    "price": 29.90,
+    "type": "Tool"
+  },
+  {
+    "id": 2,
+    "name": "Power drill",
+    "brand": "Bosch",
+    "quantity": 80,
+    "full-stock": 150,
+    "price": 599.90,
+    "type": "Tool"
+  },
+  {
+    "id": 3,
+    "name": "Hammer",
+    "brand": "Stanley",
+    "quantity": 120,
+    "full-stock": 180,
+    "price": 149.90,
+    "type": "Tool"
+  },
+  {
+    "id": 4,
+    "name": "Adjustable Wrench",
+    "brand": "Gedore",
+    "quantity": 60,
+    "full-stock": 100,
+    "price": 249.00,
+    "type": "Tool"
+  },
+  {
+    "id": 5,
+    "name": "Tape Measure 5m",
+    "brand": "TorkCraft",
+    "quantity": 200,
+    "full-stock": 250,
+    "price": 79.90,
+    "type": "Tool"
+  },
+  {
+    "id": 6,
+    "name": "Safety Goggles",
+    "brand": "3M",
+    "quantity": 90,
+    "full-stock": 120,
+    "price": 89.90,
+    "type": "Safety Equipment"
+  },
+  {
+    "id": 7,
+    "name": "Hard Hat",
+    "brand": "Dromex",
+    "quantity": 70,
+    "full-stock": 100,
+    "price": 149.00,
+    "type": "Safety Equipment"
+  },
+  {
+    "id": 8,
+    "name": "Paint Brush 50mm",
+    "brand": "Hamiltons",
+    "quantity": 140,
+    "full-stock": 200,
+    "price": 59.90,
+    "type": "Paint Brush"
+  },
+  {
+    "id": 9,
+    "name": "PVA Wall Paint White 5L",
+    "brand": "Plascon",
+    "quantity": 45,
+    "full-stock": 60,
+    "price": 329.00,
+    "type": "Paint"
+  },
+  {
+    "id": 10,
+    "name": "Enamel Gloss Black 1L",
+    "brand": "Duram",
+    "quantity": 30,
+    "full-stock": 50,
+    "price": 199.90,
+    "type": "Paint"
+  },
+  {
+    "id": 11,
+    "name": "Wood Screws 4x40mm (100 pack)",
+    "brand": "Fischer",
+    "quantity": 250,
+    "full-stock": 300,
+    "price": 89.00,
+    "type": "Screws"
+  },
+  {
+    "id": 12,
+    "name": "Drywall Screws 3.5x25mm (200 pack)",
+    "brand": "GripFast",
+    "quantity": 250,
+    "full-stock": 250,
+    "price": 129.90,
+    "type": "Screws"
+  },
+  {
+    "id": 13,
+    "name": "Round Wire Nails 75mm (1kg pack)",
+    "brand": "Bosun",
+    "quantity": 90,
+    "full-stock": 120,
+    "price": 109.00,
+    "type": "Nails"
+  }
+]

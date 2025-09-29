@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { Shift } from '../../../models/shift';
+import { Shift } from '../../../models/shift.model';
 
 
 @Component({
