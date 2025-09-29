@@ -19,3 +19,12 @@
   transform: translateY(-5px);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.2);
 }
+
+.dashboard-container {
+  display: flex;
+  gap: 20px; /* space between the cards */
+  justify-content: center; /* center them horizontally */
+  align-items: stretch; /* make them equal height if possible */
+  margin: 20px auto;
+  width: 60%; /* matches your admin-container width */
+}

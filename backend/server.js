@@ -205,6 +205,25 @@ app.get('/api/stock/summary', async (req, res) => {
   }
 });
 
+// GET /api/working/summary → how many employees are working right now
+app.get('/api/working/summary', async (req, res) => {
+  try {
+    const employees = await readJson(usersFile);
+    const activeShifts = await readJson(tempFile);
+
+    const totalEmployees = employees.length;
+    const workingCount = activeShifts.length;
+
+    res.json({
+      workingCount,
+      totalEmployees
+    });
+  } catch (err) {
+    console.error("Error fetching working summary:", err);
+    res.status(500).send("Error fetching working summary");
+  }
+});
+
 // ------------------------------------------------ //
 
 app.listen(PORT, () => {

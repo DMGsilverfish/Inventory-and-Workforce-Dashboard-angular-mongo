@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { DashboardStock } from "../../dashboard/dashboard-stock/dashboard-stock";
 import { AdminEmployeeListComponent } from "./admin-employee-list/admin-employee-list.component";
+import { DashboardWorking } from "../../dashboard/dashboard-working/dashboard-working";
 
 interface Employee {
   id: number;
@@ -16,7 +17,7 @@ interface Employee {
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, DashboardStock, RouterModule, AdminEmployeeListComponent],
+  imports: [CommonModule, HttpClientModule, DashboardStock, RouterModule, AdminEmployeeListComponent, DashboardWorking],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
