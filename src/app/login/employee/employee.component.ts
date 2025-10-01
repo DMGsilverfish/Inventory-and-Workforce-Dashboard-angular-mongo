@@ -4,11 +4,10 @@ import { AuthService } from '../../auth.service';
 import { ShiftService } from '../../shift.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { StockComponent } from "../stock/stock/stock.component";
 
 @Component({
   selector: 'app-employee',
-  imports: [CommonModule, HttpClientModule, StockComponent],
+  imports: [CommonModule, HttpClientModule],
   providers: [ShiftService],
   templateUrl: './employee.component.html',
   styleUrls: ['./employee.component.css']
