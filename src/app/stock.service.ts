@@ -20,4 +20,16 @@ export class StockService {
             `${this.apiURL}/summary`
         );
     }
+
+    addStockItem(item: StockItem): Observable<StockItem> {
+        return this.http.post<StockItem>(this.apiURL, item);
+    }
+
+    updateStockItem(id: number, updates: Partial<StockItem>): Observable<StockItem> {
+        return this.http.patch<StockItem>(`${this.apiURL}/${id}`, updates);
+    }
+
+    deleteStockItem(id: number): Observable<void> {
+        return this.http.delete<void>(`${this.apiURL}/${id}`);
+    }
 }

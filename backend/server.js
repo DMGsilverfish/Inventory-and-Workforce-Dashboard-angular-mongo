@@ -225,6 +225,64 @@ app.get('/api/working/summary', async (req, res) => {
 });
 
 // ------------------------------------------------ //
+// ------------------Load Stock-------------------- //
+
+// POST /api/stock → add new stock item
+app.post('/api/stock' , async (req, res) => {
+  try {
+    const stock = await readJson(stockFile);
+    const newItem = req.body;
+
+    newItem.id = stock.length ? Math.max(...stock.map(i => i.id)) + 1 : 1;
+    await writeJson(stockFile, stock);
+
+    res.status(201).json(newItem);
+  } catch (err) {
+    console.error("Error adding stock item:", err);
+    res.status(500).send('Error adding stock item');
+  }
+});
+
+// PATCH /api/stock/:id → update existing stock item
+app.patch('api/stock/:id', async (req, res) => {
+  try {
+    const stock = await readJson(stockFile);
+    const id = parseInt(req.params.id);
+    const updates = req.body;
+
+    const index = stock.findIndex(i => i.id === id);
+    if (index === -1) return res.status(404).send('Stock item not found');
+
+    stock[index] = { ...stock[index], ...updates };
+    await writeJson(stockFile, stock);
+
+    res.json(stock[index]);
+  } catch (err) {
+    console.error("Error updating stock item:", err);
+    res.status(500).send('Error updating stock item');
+  }
+});
+
+// DELETE /api/stock/:id → delete stock item
+app.delete('/api/stock/:id', async (req, res) => {
+  try {
+    let stock = await readJson(stockFile);
+    const id = parseInt(req.params.id);
+
+    const exists = stock.some(i => i.id === id);
+    if (!exists) return res.status(404).send('Stock item not found');
+
+    stock = stock.filter(i => i.id !== id);
+    await writeJson(stockFile, stock);
+
+    res.status(204).send();
+  } catch (err) {
+    console.error("Error deleting stock item:", err);
+    res.status(500).send('Error deleting stock item');
+  }
+});
+
+// ------------------------------------------------ //
 
 app.listen(PORT, () => {
   console.log(`Backend server running RESTfully on http://localhost:${PORT}`);
