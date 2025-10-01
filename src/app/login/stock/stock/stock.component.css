@@ -1,0 +1,24 @@
+.stock-container {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  padding: 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  text-align: center;
+}
+
+.load-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: #1976d2;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.load-btn:hover {
+  background: #125ca1;
+}

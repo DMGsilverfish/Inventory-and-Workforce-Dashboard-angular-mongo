@@ -1,0 +1,28 @@
+<div class="load-stock-container">
+  <h2>Available Stock</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Quantity</th>
+        <th>Full Stock</th>
+        <th>Price</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of stock; track item.id) {
+        <tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.brand }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>{{ item['full-stock'] }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.type }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
