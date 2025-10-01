@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { StockItem } from '../../../models/stock-item.model';
+import { StockService } from '../../../stock.service';
 
 @Component({
   selector: 'app-load-stock',
@@ -9,14 +10,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './load-stock.component.css'
 })
 export class LoadStockComponent implements OnInit {
-  stock: any[] = [];
+  stockItems: StockItem[] = [];
+  loading = true;
+  error: string | null = null;
 
-  constructor(private http: HttpClient) { }
+  constructor(private stockService: StockService) { }
 
   ngOnInit(): void {
-      this.http.get<any[]>('http://localhost:3000/stock')
-        .subscribe(data => {
-          this.stock = data;
-        });
+    this.loadStock();
+  }
+
+  loadStock() {
+    this.stockService.getStock().subscribe({
+      next: (data) => {
+        this.stockItems = data;
+        this.loading = false;
+      },
+      error: (err) => {
+        this.error = 'Error loading stock data';
+        this.loading = false;
+        console.error(err);
+      }
+    });
   }
 }
