@@ -8,6 +8,7 @@
   } @else if (stockItems.length === 0) {
     <p>No stock items available.</p>
   } @else {
+    
     <table>
       <thead>
         <tr>
@@ -16,6 +17,7 @@
           <th>Name</th>
           <th>Quantity</th>
           <th>Load Stock</th>
+          <th>Delete Item</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +27,8 @@
             <td>{{ item.type }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td><button (click)="openModal(item)">Load</button></td>
+            <td><button class="btn-load" (click)="openModal(item)">Load</button></td>
+            <td><button class="btn-delete" (click)="openDeleteModal(item)">Delete</button></td>
           </tr>
         }
       </tbody>
@@ -36,22 +39,38 @@
 <!-- Load Stock Modal -->
  @if (showModal && selectedItem) {
   <div class="modal-overlay">
-  <div class="modal">
-    <h3>Load Stock: {{ selectedItem.name }}</h3>
+    <div class="modal">
+      <h3>Load Stock: {{ selectedItem.name }}</h3>
 
-    <p>Current: {{ selectedItem.quantity }} / {{ selectedItem['full-stock'] }}</p>
+      <p>Current: {{ selectedItem.quantity }} / {{ selectedItem['full-stock'] }}</p>
 
-    <input type="number" [(ngModel)]="addAmount" placeholder="Enter amount" />
+      <input type="number" [(ngModel)]="addAmount" placeholder="Enter amount" />
 
-    @if (validationError) {
-      <p class="error">{{ validationError }}</p>
-    }
+      @if (validationError) {
+        <p class="error">{{ validationError }}</p>
+      }
 
-    <div class="modal-actions">
-      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
-      <button class="add-btn" (click)="confirmAdd()">Add</button>
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="closeModal()">Cancel</button>
+        <button class="btn-add" (click)="confirmAdd()">Add</button>
+      </div>
     </div>
   </div>
-</div>
  }
+ <!-- Delete Confirmation Modal -->
+@if (showDeleteConfirm && itemToDelete) {
+  <div class="modal-overlay">
+    <div class="modal">
+      <h3>Confirm Delete</h3>
+      <p>Are you sure you want to delete <strong>{{ itemToDelete.name }}</strong>?</p>
+      <div class="modal-actions">
+        <button class="btn-cancel" (click)="closeDeleteModal()">Cancel</button>
+        <button class="btn-delete" (click)="confirmDelete()">Delete</button>
+      </div>
+    </div>
+  </div>
+}
+
+
+
  

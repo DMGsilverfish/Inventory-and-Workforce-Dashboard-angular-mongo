@@ -19,11 +19,11 @@
   },
   {
     "id": 3,
-    "name": "Hammer",
+    "name": "Claw Hammer",
     "brand": "Stanley",
     "quantity": 120,
     "full-stock": 180,
-    "price": 149.9,
+    "price": 199.9,
     "type": "Tool"
   },
   {

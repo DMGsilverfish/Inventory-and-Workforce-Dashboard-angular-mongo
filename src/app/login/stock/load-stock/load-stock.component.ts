@@ -77,4 +77,37 @@ export class LoadStockComponent implements OnInit {
     });
 
   }
+
+  showDeleteConfirm = false;
+  itemToDelete: StockItem | null = null;
+
+  openDeleteModal(item: StockItem) {
+    this.itemToDelete = item;
+    this.showDeleteConfirm = true;
+  }
+
+  closeDeleteModal() {
+    this.showDeleteConfirm = false;
+    this.itemToDelete = null;
+  }
+
+  confirmDelete() {
+    if (!this.itemToDelete) return;
+
+    this.stockService.deleteStockItem(this.itemToDelete.id).subscribe({
+      next: () => {
+        this.stockItems = this.stockItems.filter(s => s.id !== this.itemToDelete?.id);
+        this.closeDeleteModal();
+      },
+      error: (err) => {
+        console.error("Error deleting item:", err);
+        this.error = "Failed to delete stock item.";
+        this.closeDeleteModal();
+      }
+    });
+  }
+
+
 }
+
+

@@ -47,14 +47,30 @@ tbody tr:hover {
 }
 
 button {
-  background: #007bff;
-  color: white;
   border: none;
   padding: 6px 14px;
   border-radius: 8px;
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s ease-in-out;
+}
+
+/* Load button */
+.btn-load {
+  background: #007bff;
+  color: white;
+}
+.btn-load:hover {
+  background: #0056b3;
+}
+
+/* Delete button */
+.btn-delete {
+  background: #dc3545;
+  color: white;
+}
+.btn-delete:hover {
+  background: #a71d2a;
 }
 
 button:hover {
@@ -127,29 +143,19 @@ button:hover {
   margin-top: 15px;
 }
 
-.add-btn {
+.btn-add {
   background: #28a745;
   color: white;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 }
-
-.add-btn:hover {
+.btn-add:hover {
   background: #218838;
 }
 
-.cancel-btn {
+.btn-cancel {
   background: #ccc;
   color: #333;
-  padding: 8px 14px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
 }
-
-.cancel-btn:hover {
+.btn-cancel:hover {
   background: #999;
 }
 
@@ -159,8 +165,61 @@ button:hover {
   margin-top: 5px;
 }
 
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
 }
+
+.delete-confirm-box {
+  background: #fff3f3;
+  border: 1px solid #f5c2c2;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.delete-confirm-box p {
+  margin-bottom: 10px;
+  color: #a33;
+  font-weight: 500;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-delete {
+  background: #dc3545;
+  color: white;
+}
+.btn-delete:hover {
+  background: #a71d2a;
+}
+
+
+.btn-cancel {
+  background: #6c757d;
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-cancel:hover {
+  background: #555;
+}
+
 
