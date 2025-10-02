@@ -25,10 +25,33 @@
             <td>{{ item.type }}</td>
             <td>{{ item.name }}</td>
             <td>{{ item.quantity }}</td>
-            <td><button>Load</button></td>
+            <td><button (click)="openModal(item)">Load</button></td>
           </tr>
         }
       </tbody>
     </table>
   }
 </div>
+
+<!-- Load Stock Modal -->
+ @if (showModal && selectedItem) {
+  <div class="modal-overlay">
+  <div class="modal">
+    <h3>Load Stock: {{ selectedItem.name }}</h3>
+
+    <p>Current: {{ selectedItem.quantity }} / {{ selectedItem['full-stock'] }}</p>
+
+    <input type="number" [(ngModel)]="addAmount" placeholder="Enter amount" />
+
+    @if (validationError) {
+      <p class="error">{{ validationError }}</p>
+    }
+
+    <div class="modal-actions">
+      <button class="cancel-btn" (click)="closeModal()">Cancel</button>
+      <button class="add-btn" (click)="confirmAdd()">Add</button>
+    </div>
+  </div>
+</div>
+ }
+ 

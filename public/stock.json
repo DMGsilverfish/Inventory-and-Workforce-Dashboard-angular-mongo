@@ -5,16 +5,16 @@
     "brand": "ToolMaster",
     "quantity": 150,
     "full-stock": 200,
-    "price": 29.90,
+    "price": 29.9,
     "type": "Tool"
   },
   {
     "id": 2,
     "name": "Power drill",
     "brand": "Bosch",
-    "quantity": 80,
+    "quantity": 85,
     "full-stock": 150,
-    "price": 599.90,
+    "price": 599.9,
     "type": "Tool"
   },
   {
@@ -23,7 +23,7 @@
     "brand": "Stanley",
     "quantity": 120,
     "full-stock": 180,
-    "price": 149.90,
+    "price": 149.9,
     "type": "Tool"
   },
   {
@@ -32,7 +32,7 @@
     "brand": "Gedore",
     "quantity": 60,
     "full-stock": 100,
-    "price": 249.00,
+    "price": 249,
     "type": "Tool"
   },
   {
@@ -41,7 +41,7 @@
     "brand": "TorkCraft",
     "quantity": 200,
     "full-stock": 250,
-    "price": 79.90,
+    "price": 79.9,
     "type": "Tool"
   },
   {
@@ -50,7 +50,7 @@
     "brand": "3M",
     "quantity": 90,
     "full-stock": 120,
-    "price": 89.90,
+    "price": 89.9,
     "type": "Safety Equipment"
   },
   {
@@ -59,7 +59,7 @@
     "brand": "Dromex",
     "quantity": 70,
     "full-stock": 100,
-    "price": 149.00,
+    "price": 149,
     "type": "Safety Equipment"
   },
   {
@@ -68,7 +68,7 @@
     "brand": "Hamiltons",
     "quantity": 140,
     "full-stock": 200,
-    "price": 59.90,
+    "price": 59.9,
     "type": "Paint Brush"
   },
   {
@@ -77,7 +77,7 @@
     "brand": "Plascon",
     "quantity": 45,
     "full-stock": 60,
-    "price": 329.00,
+    "price": 329,
     "type": "Paint"
   },
   {
@@ -86,7 +86,7 @@
     "brand": "Duram",
     "quantity": 30,
     "full-stock": 50,
-    "price": 199.90,
+    "price": 199.9,
     "type": "Paint"
   },
   {
@@ -95,7 +95,7 @@
     "brand": "Fischer",
     "quantity": 250,
     "full-stock": 300,
-    "price": 89.00,
+    "price": 89,
     "type": "Screws"
   },
   {
@@ -104,7 +104,7 @@
     "brand": "GripFast",
     "quantity": 250,
     "full-stock": 250,
-    "price": 129.90,
+    "price": 129.9,
     "type": "Screws"
   },
   {
@@ -113,7 +113,7 @@
     "brand": "Bosun",
     "quantity": 90,
     "full-stock": 120,
-    "price": 109.00,
+    "price": 109,
     "type": "Nails"
   }
 ]

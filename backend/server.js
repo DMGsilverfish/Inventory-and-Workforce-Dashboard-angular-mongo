@@ -243,25 +243,30 @@ app.post('/api/stock' , async (req, res) => {
   }
 });
 
-// PATCH /api/stock/:id → update existing stock item
-app.patch('api/stock/:id', async (req, res) => {
+// PATCH /api/stock/:id → update a stock item
+app.patch('/api/stock/:id', async (req, res) => {
+  const { id } = req.params;
+  const updates = req.body;
+
   try {
-    const stock = await readJson(stockFile);
-    const id = parseInt(req.params.id);
-    const updates = req.body;
+    let stock = await readJson(stockFile);
+    const index = stock.findIndex(item => String(item.id) === id);
 
-    const index = stock.findIndex(i => i.id === id);
-    if (index === -1) return res.status(404).send('Stock item not found');
+    if (index === -1) {
+      return res.status(404).send('Stock item not found');
+    }
 
+    // merge updates into existing stock item
     stock[index] = { ...stock[index], ...updates };
-    await writeJson(stockFile, stock);
 
+    await writeJson(stockFile, stock);
     res.json(stock[index]);
   } catch (err) {
-    console.error("Error updating stock item:", err);
-    res.status(500).send('Error updating stock item');
+    console.error("Error updating stock:", err);
+    res.status(500).send('Error updating stock');
   }
 });
+
 
 // DELETE /api/stock/:id → delete stock item
 app.delete('/api/stock/:id', async (req, res) => {
