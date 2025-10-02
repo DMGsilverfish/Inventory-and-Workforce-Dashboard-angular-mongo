@@ -1,6 +1,10 @@
 <div class="stock-container">
   <h2>Stock Items</h2>
 
+  <div class="stock-actions">
+    <button class="btn-add-item" [routerLink]="['/employee/stock/add-item']">+ Add New Item</button>
+  </div>
+
   @if (loading) {
     <p>Loading stock...</p>
   } @else if (error) {

@@ -3,11 +3,13 @@ import { StockItem } from '../../../models/stock-item.model';
 import { StockService } from '../../../stock.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-load-stock',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './load-stock.component.html',
   styleUrl: './load-stock.component.css'
 })

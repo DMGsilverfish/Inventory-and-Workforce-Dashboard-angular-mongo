@@ -8,6 +8,7 @@ import { AuthGuard } from './auth-guard';
 import { ViewShiftsComponent } from './login/view-shifts/view-shifts.component';
 import { StockComponent } from './login/stock/stock/stock.component';
 import { LoadStockComponent } from './login/stock/load-stock/load-stock.component';
+import { AddItemComponent } from './login/stock/add-item/add-item.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -30,7 +31,8 @@ export const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
         { path: '', component: EmployeeComponent }, // default employee page
-        { path: 'load-stock', component: LoadStockComponent }
+        { path: 'load-stock', component: LoadStockComponent },
+        { path: 'stock/add-item', component: AddItemComponent}
     ]
   }
 ];

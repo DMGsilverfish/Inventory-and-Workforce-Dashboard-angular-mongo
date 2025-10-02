@@ -233,15 +233,30 @@ app.post('/api/stock' , async (req, res) => {
     const stock = await readJson(stockFile);
     const newItem = req.body;
 
-    newItem.id = stock.length ? Math.max(...stock.map(i => i.id)) + 1 : 1;
+    // Always assign ID first
+    const id = stock.length ? Math.max(...stock.map(i => i.id)) + 1 : 1;
+
+    // Normalize the item structure (ensure all fields exist in consistent order)
+    const normalizedItem = {
+      id, // always first
+      name: newItem.name || '',
+      brand: newItem.brand || '',
+      quantity: newItem.quantity ?? 0,
+      ['full-stock']: newItem['full-stock'] ?? 0,
+      price: newItem.price ?? 0,
+      type: newItem.type || ''
+    };
+
+    stock.push(normalizedItem);
     await writeJson(stockFile, stock);
 
-    res.status(201).json(newItem);
+    res.status(201).json(normalizedItem);
   } catch (err) {
     console.error("Error adding stock item:", err);
     res.status(500).send('Error adding stock item');
   }
 });
+
 
 // PATCH /api/stock/:id → update a stock item
 app.patch('/api/stock/:id', async (req, res) => {

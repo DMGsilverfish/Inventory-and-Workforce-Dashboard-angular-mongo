@@ -115,5 +115,14 @@
     "full-stock": 120,
     "price": 109,
     "type": "Nails"
+  },
+  {
+    "id": 14,
+    "name": "Red Matt 1L",
+    "brand": "Duram",
+    "quantity": 25,
+    "full-stock": 30,
+    "price": "549.9",
+    "type": "Paint"
   }
 ]

@@ -1,0 +1,46 @@
+<div class="add-item-container">
+  <h2>Add New Stock Item</h2>
+
+  <form (ngSubmit)="addItem()" #addItemForm="ngForm">
+    <div class="form-group">
+      <label for="type">Type</label>
+      <input id="type" name="type" [(ngModel)]="newItem.type" required />
+    </div>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" name="name" [(ngModel)]="newItem.name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="brand">Brand</label>
+      <input id="brand" name="brand" [(ngModel)]="newItem.brand" required />
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input id="price" name="price" [(ngModel)]="newItem.price" required />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity</label>
+      <input type="number" id="quantity" name="quantity" [(ngModel)]="newItem.quantity" required min="0" />
+    </div>
+
+    <div class="form-group">
+      <label for="full-stock">Full Stock</label>
+      <input type="number" id="full-stock" name="full-stock" [(ngModel)]="newItem['full-stock']" required min="1" />
+    </div>
+
+    <button type="submit" [disabled]="loading || !addItemForm.form.valid">
+      {{ loading ? 'Adding...' : 'Add Item' }}
+    </button>
+  </form>
+
+  @if (successMessage) {
+    <p class="success">{{ successMessage }}</p>
+  }
+  @if (errorMessage) {
+    <p class="error">{{ errorMessage }}</p>
+  }
+</div>
