@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { StockItem } from '../../../models/stock-item.model';
 import { StockService } from '../../../stock.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-add-item.component',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './add-item.component.html',
   styleUrl: './add-item.component.css'
 })

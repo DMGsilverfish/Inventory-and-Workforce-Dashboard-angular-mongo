@@ -6,38 +6,48 @@
   </div>
 
   @if (loading) {
-    <p>Loading stock...</p>
-  } @else if (error) {
-    <p class="error">{{ error }}</p>
-  } @else if (stockItems.length === 0) {
-    <p>No stock items available.</p>
-  } @else {
-    
-    <table>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Type</th>
-          <th>Name</th>
-          <th>Quantity</th>
-          <th>Load Stock</th>
-          <th>Delete Item</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (item of stockItems; track item.id) {
-          <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.type }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.quantity }}</td>
-            <td><button class="btn-load" (click)="openModal(item)">Load</button></td>
-            <td><button class="btn-delete" (click)="openDeleteModal(item)">Delete</button></td>
-          </tr>
-        }
-      </tbody>
-    </table>
-  }
+  <p>Loading stock...</p>
+} @else if (error) {
+  <p class="error">{{ error }}</p>
+} @else {
+  <div class="stock-container">
+    @for (group of (groupedStock | keyvalue); track group.key) {
+      <div class="stock-group">
+        <h3>{{ group.key }}</h3>
+        <table class="stock-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Brand</th>
+              <th>Quantity</th>
+              <th>Full Stock</th>
+              <th>Price (R)</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of group.value; track item.id) {
+              <tr>
+                <td>{{ item.id }}</td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.brand }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item['full-stock'] }}</td>
+                <td>{{ item.price }}</td>
+                <td>
+                  <button (click)="openModal(item)">Add</button>
+                  <button (click)="openDeleteModal(item)" class="delete-btn">Delete</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </div>
+}
+
 </div>
 
 <!-- Load Stock Modal -->

@@ -15,6 +15,7 @@ import { RouterModule } from '@angular/router';
 })
 export class LoadStockComponent implements OnInit {
   stockItems: StockItem[] = [];
+  groupedStock: { [key: string]: StockItem[] } = {};
   loading = true;
   error: string | null = null;
 
@@ -34,6 +35,7 @@ export class LoadStockComponent implements OnInit {
     this.stockService.getStock().subscribe({
       next: (data) => {
         this.stockItems = data;
+        this.groupedStock = this.groupByType(data);
         this.loading = false;
       },
       error: (err) => {
@@ -42,6 +44,15 @@ export class LoadStockComponent implements OnInit {
         console.error(err);
       }
     });
+  }
+
+  private groupByType(stock: StockItem[]): { [key: string]: StockItem[] } {
+    return stock.reduce((groups, item) => {
+      const type = item.type || 'Other';
+      if (!groups[type]) groups[type] = [];
+      groups[type].push(item);
+      return groups;
+    }, {} as { [key: string]: StockItem[] });
   }
 
   openModal(item: StockItem) {
