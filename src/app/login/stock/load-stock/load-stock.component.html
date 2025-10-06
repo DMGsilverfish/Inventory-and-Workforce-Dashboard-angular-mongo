@@ -1,9 +1,20 @@
 <div class="stock-container">
   <h2>Stock Items</h2>
 
-  <div class="stock-actions">
-    <button class="btn-add-item" [routerLink]="['/employee/stock/add-item']">+ Add New Item</button>
+  <div class="stock-header">
+  <div class="search-container">
+    <input
+      type="text"
+      placeholder="Search by name, type, brand..."
+      [(ngModel)]="searchTerm"
+      (input)="filterStock()"
+    />
   </div>
+
+  <button class="btn-add" routerLink="/employee/stock/add-item">
+    + Add New Item
+  </button>
+</div>
 
   @if (loading) {
   <p>Loading stock...</p>
@@ -34,10 +45,10 @@
                 <td>{{ item.brand }}</td>
                 <td>{{ item.quantity }}</td>
                 <td>{{ item['full-stock'] }}</td>
-                <td>{{ item.price }}</td>
+                <td>{{ item.price | currency:'ZAR':'symbol-narrow':'1.0-2' }}</td>
                 <td>
-                  <button (click)="openModal(item)">Add</button>
-                  <button (click)="openDeleteModal(item)" class="delete-btn">Delete</button>
+                  <button class="btn-add" (click)="openModal(item)">Add</button>
+                  <button class="btn-delete" (click)="openDeleteModal(item)">Delete</button>
                 </td>
               </tr>
             }

@@ -25,6 +25,10 @@ export class LoadStockComponent implements OnInit {
   addAmount: number = 0;
   validationError: string | null = null;
 
+  //search state
+  searchTerm: string = '';
+  filteredStock: StockItem[] = [];
+
   constructor(private stockService: StockService) { }
 
   ngOnInit(): void {
@@ -35,6 +39,7 @@ export class LoadStockComponent implements OnInit {
     this.stockService.getStock().subscribe({
       next: (data) => {
         this.stockItems = data;
+        this.filteredStock = data;
         this.groupedStock = this.groupByType(data);
         this.loading = false;
       },
@@ -120,7 +125,26 @@ export class LoadStockComponent implements OnInit {
     });
   }
 
+  //search logic
+  filterStock() {
+    const term = this.searchTerm.trim().toLowerCase();
 
+    if (!term) {
+      // Reset to full data when search is cleared
+      this.groupedStock = this.groupByType(this.stockItems);
+      return;
+    }
+
+    // Filter the full list
+    const filtered = this.stockItems.filter(item =>
+      item.name.toLowerCase().includes(term) ||
+      item.brand.toLowerCase().includes(term) ||
+      item.type.toLowerCase().includes(term)
+    );
+
+    // Regroup filtered items
+    this.groupedStock = this.groupByType(filtered);
+    }
 }
 
 
