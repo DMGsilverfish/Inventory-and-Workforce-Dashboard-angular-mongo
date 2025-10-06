@@ -4,14 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { ShiftService } from '../../shift.service';
 import { Shift } from '../../models/shift.model';
-import { HttpClientModule } from '@angular/common/http';
+
 import { ViewShiftsGraphComponent } from './view-shifts-graph/view-shifts-graph.component';
 import { ViewShiftsTableComponent } from './view-shifts-table/view-shifts-table.component';
 
 
 @Component({
   selector: 'app-view-shifts',
-  imports: [CommonModule, HttpClientModule, ViewShiftsTableComponent, ViewShiftsGraphComponent],
+  imports: [CommonModule, ViewShiftsTableComponent, ViewShiftsGraphComponent],
   standalone: true,
   templateUrl: './view-shifts.component.html',
   styleUrls: ['./view-shifts.component.css'],

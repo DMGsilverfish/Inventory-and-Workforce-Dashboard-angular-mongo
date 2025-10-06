@@ -6,7 +6,6 @@ import { EmployeeComponent } from './login/employee/employee.component';
 import { AdminComponent } from './login/admin/admin.component';
 import { AuthGuard } from './auth-guard';
 import { ViewShiftsComponent } from './login/view-shifts/view-shifts.component';
-import { StockComponent } from './login/stock/stock/stock.component';
 import { LoadStockComponent } from './login/stock/load-stock/load-stock.component';
 import { AddItemComponent } from './login/stock/add-item/add-item.component';
 
