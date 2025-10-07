@@ -1,18 +1,14 @@
 # Inventory and Workforce Management System
 
 <p align="center">
-  <a href="https://www.mongodb.com/">
-    <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb-logo-rgb-j6w271g1xn.jpg" alt="MongoDB Logo" width="120"/>
-  </a>
-    <a href="https://expressjs.com/">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express Logo" width="120"/>
-  </a>
-  <a href="https://angular.io">
-    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo" width="120"/>
-  </a>
-  <a href="https://nodejs.org">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" width="120"/>
-  </a>
+  <img src="public/mongo.png" alt="MongoDB" width="95" style="margin-right:10px;"/>
+  <img src="public/express.png" alt="Express.js" width="95" style="margin-right:10px;"/>
+  <img src="public/angular.jpeg" alt="Angular" width="95" style="margin-right:10px;"/>
+  <img src="public/node.jpeg" alt="Node.js" width="95"/>
+</p>
+
+<p align="center">
+  <b>Built with the MEAN Stack – MongoDB, Express, Angular, and Node.js</b>
 </p>
 
 [![Angular Version](https://img.shields.io/badge/Angular-20-red)](https://angular.io)
