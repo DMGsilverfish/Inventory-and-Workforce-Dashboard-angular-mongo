@@ -1,10 +1,10 @@
 # Inventory and Workforce Management System
 
 <p align="center">
-  <img src="public/mongo.png" alt="MongoDB" width="95" style="margin-right:10px;"/>
+  <img src="public/mongo.jpeg" alt="MongoDB" width="95" style="margin-right:10px;"/>
   <img src="public/express.png" alt="Express.js" width="95" style="margin-right:10px;"/>
-  <img src="public/angular.jpeg" alt="Angular" width="95" style="margin-right:10px;"/>
-  <img src="public/node.jpeg" alt="Node.js" width="95"/>
+  <img src="public/angular.png" alt="Angular" width="95" style="margin-right:10px;"/>
+  <img src="public/node.jpg" alt="Node.js" width="95"/>
 </p>
 
 <p align="center">
