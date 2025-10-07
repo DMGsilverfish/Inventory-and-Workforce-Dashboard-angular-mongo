@@ -1,8 +1,17 @@
 # Inventory and Workforce Management System
 
 <p align="center">
+  <a href="https://www.mongodb.com/">
+    <img src="https://webassets.mongodb.com/_com_assets/cms/mongodb-logo-rgb-j6w271g1xn.jpg" alt="MongoDB Logo" width="120"/>
+  </a>
+    <a href="https://expressjs.com/">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express Logo" width="120"/>
+  </a>
   <a href="https://angular.io">
-    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo" width="150"/>
+    <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular Logo" width="120"/>
+  </a>
+  <a href="https://nodejs.org">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js Logo" width="120"/>
   </a>
 </p>
 
@@ -11,11 +20,15 @@
 [![RESTful API](https://img.shields.io/badge/REST-02569B?style=flat&logo=swagger&logoColor=white)](https://restfulapi.net/)
 [![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white)](https://nodejs.org/)
 [![Express.js](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=flat&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
 > **Admin Dashboard and Employee Interface**  
-> ⚠️ This project is still in **active development/production**. Features may change as it grows.
+> This version connects to a live **MongoDB database** using a **Node + Express backend**.  
+>  
+> 💡 If you prefer a simpler setup (no MongoDB required), check out the Angular-only version here:  
+> 👉 [Inventory-and-Workforce-Dashboard-angular](https://github.com/DMGsilverfish/Inventory-and-Workforce-Dashboard-angular)
 
 ---
 
