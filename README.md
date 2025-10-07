@@ -1,10 +1,14 @@
 # Inventory and Workforce Management System
 
 <p align="center">
-  <img src="public/mongo.jpeg" alt="MongoDB" width="95" style="margin-right:10px;"/>
-  <img src="public/express.png" alt="Express.js" width="95" style="margin-right:10px;"/>
-  <img src="public/angular.png" alt="Angular" width="95" style="margin-right:10px;"/>
-  <img src="public/node.jpg" alt="Node.js" width="95"/>
+  <!-- M -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" alt="MongoDB" width="90" style="margin-right:10px;"/>
+  <!-- E -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express.js" width="90" style="margin-right:10px;"/>
+  <!-- A -->
+  <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" width="90" style="margin-right:10px;"/>
+  <!-- N -->
+  <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Node.js" width="90"/>
 </p>
 
 <p align="center">
