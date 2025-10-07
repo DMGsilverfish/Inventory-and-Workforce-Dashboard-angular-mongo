@@ -23,24 +23,25 @@ export class LoginComponent {
       return;
     }
 
-    this.http.get<any[]>('/admin.json').subscribe(admins => {
+    this.http.get<any[]>('http://localhost:3000/api/admin').subscribe(admins => {
       const admin = admins.find(a => a.name === this.username && a.pin === this.password);
       if (admin) {
-        this.authService.setUserId(admin.id)
+        this.authService.setUserId(admin.id);
         this.authService.login('admin');    
         this.router.navigate(['./admin']);
       } else {
-        this.http.get<any[]>('/employee.json').subscribe(employees => {
+        this.http.get<any[]>('http://localhost:3000/api/employee').subscribe(employees => {
           const employee = employees.find(e => e.name === this.username && e.pin === this.password);
           if (employee) {
-            this.authService.setUserId(employee.id)
+            this.authService.setUserId(employee.id);
             this.authService.login('employee');
             this.router.navigate(['./employee']);
           } else {
             alert('Invalid username or pin');
           }
-        })
+        });
       }
-    })
+    });
+
   }
 }

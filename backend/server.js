@@ -53,6 +53,19 @@ function writeJson(filePath, data) {
 
 // ------------------- ROUTES ------------------- //
 
+// ---------------- Employees ---------------- //
+// GET all employees
+app.get('/api/employees', async (req, res) => {
+  try {
+    const employees = await db.collection('employee').find({}).toArray();
+    res.json(employees);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching employees');
+  }
+});
+
+
 // ---------------- Shifts ---------------- //
 // GET /api/shifts?status=active
 app.get('/api/shifts', async (req, res) => {
@@ -261,6 +274,31 @@ app.delete('/api/stock/:id', async (req, res) => {
     res.status(500).send('Error deleting stock item');
   }
 });
+
+// ------------------- LOGIN ROUTES ------------------- //
+
+// Admin login
+app.get('/api/admin', async (req, res) => {
+  try {
+    const admins = await db.collection('admin').find({}).toArray();
+    res.json(admins);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching admins');
+  }
+});
+
+// Employee login
+app.get('/api/employee', async (req, res) => {
+  try {
+    const employees = await db.collection('employee').find({}).toArray();
+    res.json(employees);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error fetching employees');
+  }
+});
+
 
 // ---------------- Server Start ---------------- //
 app.listen(PORT, () => {

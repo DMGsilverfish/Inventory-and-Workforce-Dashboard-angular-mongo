@@ -27,7 +27,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this.http.get<Employee[]>('/employee.json').subscribe({
+    this.http.get<Employee[]>('http://localhost:3000/api/employees').subscribe({
       next: (data) => {
         this.employees = data;
         console.log("Employees loaded:", this.employees);
